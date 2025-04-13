@@ -3,10 +3,10 @@ from sklearn.preprocessing import LabelEncoder
 
 
 def main():
-    process()
+    preprocess()
 
 
-def process(
+def preprocess(
     path="../data/processed/cleaned_E_Commerce.csv",
     out_path="../data/processed/preprocessed_E_Commerce.csv",
 ):
