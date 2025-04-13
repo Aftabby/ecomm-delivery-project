@@ -17,27 +17,30 @@ Also:
 - Remove the '#' before using jinja syntax
 -->
 
-{% extends "shared_layout1.html" %}
+{#% extends "shared_layout1.html" %#}
+{% extends "layout.html" %}
 
 {% block title %}
     Project - Aftabby
 {% endblock %}
 
 {% block link %}
-    <!-- Shared CSS 
-    <link rel="stylesheet" href="{{ url_for('shared.static', filename='css/shared-style.css') }}">
-    -->
-    <!-- Project-specific CSS 
-    <link rel="stylesheet" href="{{ url_for('ds_salary.static', filename='css/custom.css') }}">
-    ds_salary is the name of the blueprint - specific to a project
-    -->
+    <!-- Shared CSS --> 
+    <!-- {# <link rel="stylesheet" href="{{# url_for('shared.static', filename='css/shared-style.css') #}}"> #} -->
+    
+    <!-- Project-specific CSS -->
+    <!-- {# <link rel="stylesheet" href="{{# url_for('ds_salary.static', filename='css/custom.css') #}}"> #} -->
+    <!-- {# ds_salary is the name of the blueprint - specific to a project #} -->
+
+    <!-- REMOVE ALL THE "#" symbol BEFORE USING JINJA SYNTAX-->
+    
 <link
 rel="stylesheet"
-href="{{ url_for('sleep_disorder.static', filename='css/style.css') }}"
+href="{{ url_for('static', filename='css/style.css') }}"
 />
 <link
 rel="stylesheet"
-href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
+href="{{ url_for('static', filename='css/mediaqueries.css') }}"
 />
 {% endblock %}
 
@@ -106,16 +109,16 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
 
     <h2>4. Exploratory Data Analysis (EDA)</h2>
     <h4>Key Insight: Customer Gender Distribution</h4>
-    <div class="graph-container">
-        <div id="graph1" class="grid-plot"></div>
+    <div id="graph-container">
+        <div id="graph1"></div>
     </div>
     <p>The dataset has the equal number of both males and female customers, 
         with percentage of <strong>49.6%</strong> and <strong>50.4%</strong> respectively.
     </p>
 
     <h4>Key Insight: Product Properties</h4>
-    <div class="graph-container">
-        <div id="graph2" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph2"></div>
     </div>
     <p> These three graphs explain the distribution of product properties - Weight, Cost and Importance 
         in the dataset. Firstly, looking at the weight distribution, we can see that the products weighing 
@@ -131,8 +134,8 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
     </p>
 
     <h4>Key Insight: Logistics</h4>
-    <div class="graph-container">
-        <div id="graph3" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph3"></div>
     </div>
     <p>The above graphs visualizes the logistics and delivery of the product. 
         In the first graph, we can see that the number of products from warehouse <strong>F</strong> is most
@@ -148,8 +151,8 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
     </p>
 
     <h4>Key Insight: Customer Experience</h4>
-    <div class="graph-container">
-        <div id="graph4" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph4"></div>
     </div>
     <p>The above graphs visualizes the customer experience based on their 
         customer care calls, rating, prior purchases and discount offered. 
@@ -171,16 +174,16 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
     </p>
 
     <h4>Key Insight: Customer Gender and Product Delivery</h4>
-    <div class="graph-container">
-        <div id="graph5" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph5"></div>
     </div>
     <p>The number of products timely delivered for both the genders is same, 
         which means there is no relation of customer gender and product delivery.
     </p>
 
     <h4>Key Insight: Product Properties and Product Delivery</h4>
-    <div class="graph-container">
-        <div id="graph6" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph6"></div>
     </div>
     <p>The above plots visualizes the relationship between product properties 
         and product delivery. From the first graph, it is quite clear that product
@@ -198,8 +201,8 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
     </p>
 
     <h4>Key Insight: Logistics and Product Delivery</h4>
-    <div class="graph-container">
-        <div id="graph7" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph7"></div>
     </div>
     <p>These graphs explain the relationship between the Logistic and timely delivery of the product. 
         Since most of the products are shipped from warehouse <strong>F</strong>, I assumed that
@@ -211,8 +214,8 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
     </p>
 
     <h4>Key Insight: Customer Experience and Product Delivery</h4>
-    <div class="graph-container">
-        <div id="graph8" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph8"></div>
     </div>
     <p>It is important to understand the customer experience and respond to 
         services provided by the E-Commerce company. The above graphs explain
@@ -237,8 +240,8 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
     </p>
 
     <h4>Key Insight: Customer Concern</h4>
-    <div class="graph-container">
-        <div id="graph9" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph9"></div>
     </div>
     <p>It is clear that customer are more concern regarding the delivery 
         of the product when the cost of the product is high. This is the 
@@ -267,8 +270,8 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
     </ul>
     <p>Below is a accuracy level comparison of the four models:</p>
 
-    <div class="graph-container">
-        <div id="graph10" class="plot1"></div>
+    <div id="graph-container">
+        <div id="graph10"></div>
     </div>
 </section>
 
@@ -310,17 +313,20 @@ href="{{ url_for('sleep_disorder.static', filename='css/mediaqueries.css') }}"
 {% endblock %}
 
 {% block script %}
-    <!-- Shared CSS 
-    <link rel="stylesheet" href="{{ url_for('shared.static', filename='css/shared-style.css') }}">
-    -->
-    <!-- Project-specific CSS 
-    <link rel="stylesheet" href="{{ url_for('ds_salary.static', filename='css/custom.css') }}">
-    ds_salary is the name of the blueprint - specific to a project
-    -->
+    <!-- Shared CSS --> 
+    <!-- {# <link rel="stylesheet" href="{{# url_for('shared.static', filename='css/shared-style.css') #}}"> #} -->
+    
+    <!-- Project-specific CSS -->
+    <!-- {# <link rel="stylesheet" href="{{# url_for('ds_salary.static', filename='css/custom.css') #}}"> #} -->
+    <!-- {# ds_salary is the name of the blueprint - specific to a project #} -->
+
+    <!-- REMOVE ALL THE "#" symbol BEFORE USING JINJA SYNTAX-->
+    
+    
     
     <!-- Pass graph_json as a JavaScript variable -->
 <script>
     var graphData = {{ context.graph_json | safe }};
 </script>
-<script src="{{ url_for('sleep_disorder.static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
