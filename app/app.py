@@ -16,7 +16,7 @@ def ecomm_delivery():
         "graph_json": graph(),
     }
 
-    return render_template("project3.html", conntext=context)
+    return render_template("project3.html", context=context)
 
 
 if __name__ == "__main__":

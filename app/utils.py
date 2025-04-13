@@ -438,6 +438,7 @@ def graph():
         uniformtext_minsize=8,
         uniformtext_mode="hide",
         xaxis_tickangle=45,
+        xaxis=dict(showticklabels=False),  # Disable x-axis tick labels
         template="plotly_white",
     )
 
